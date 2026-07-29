@@ -297,6 +297,14 @@ app.whenReady().then(() => {
 
   autoUpdater.on('error', (err) => {
     console.error('Auto-updater error:', err)
+    if (mainWindow) {
+      dialog.showMessageBox(mainWindow, {
+        type: 'error',
+        title: 'Auto-Update Error',
+        message: err.message || String(err),
+        buttons: ['OK']
+      })
+    }
   })
 
   if (!is.dev) autoUpdater.checkForUpdates()

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { useAppStore } from '@/stores/app.store'
 import { cn } from '@/lib/utils'
@@ -66,6 +66,11 @@ export function Sidebar() {
   const toggleSidebar = useAppStore(s => s.toggleSidebar)
   useAppStore(s => s.uiMode)
   const location = useLocation()
+  const [appVersion, setAppVersion] = useState('')
+
+  useEffect(() => {
+    window.electronAPI.app.getVersion().then((v) => setAppVersion(v)).catch(() => {})
+  }, [])
 
   return (
     <aside
@@ -133,7 +138,7 @@ export function Sidebar() {
 
       {!collapsed && (
         <div className="border-t p-3">
-          <p className="text-[10px] text-sidebar-foreground/40 text-center">v1.1.0</p>
+          <p className="text-[10px] text-sidebar-foreground/40 text-center">v{appVersion || '1.1.0'}</p>
         </div>
       )}
     </aside>

@@ -35,9 +35,15 @@
     },
     "files": [
       "out/**/*",
-      "resources/**/*"
+      "resources/icon.ico",
+      "resources/icon.png"
     ],
-    "extraResources": [],
+    "extraResources": [
+      {
+        "from": "resources/app-update.yml",
+        "to": "app-update.yml"
+      }
+    ],
     "asarUnpack": [
       "out/main/icon.*"
     ],
