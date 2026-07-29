@@ -59,7 +59,7 @@
         }
       ],
       "icon": "resources/icon.ico",
-      "artifactName": "${productName}-${version}-win-${arch}.${ext}"
+      "artifactName": "Rclone-App-${version}-win-${arch}.${ext}"
     },
     "mac": {
       "target": [
